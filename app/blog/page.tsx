@@ -1,6 +1,9 @@
+'use client'; 
 import Link from "next/link";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
+import Image from 'next/image';
+
 const blogs = [
   {
     slug: "benefits-of-meditation",
@@ -56,38 +59,39 @@ const blogs = [
     excerpt: "Discover why hydration is essential.",
     image: "/images.jpeg",
   },
-  // Add more blogs as needed
 ];
 
 export default function BlogPage() {
   return (
     <div>
-       <Header/>
-    <div className="container mx-auto my-8">
-      <h1 className="text-5xl font-bold mb-8 text-center">Our Blog</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {blogs.map((blog) => (
-          <div
-            key={blog.slug}
-            className="border rounded-lg overflow-hidden shadow-md"
-          >
-            <img
-              src={blog.image}
-              alt={blog.title}
-              className="h-40 w-full object-cover"
-            />
-            <div className="p-4">
-              <h2 className="text-lg font-semibold mb-2">{blog.title}</h2>
-              <p className="text-gray-600 mb-4">{blog.excerpt}</p>
-              <Link href={`/blogpost/${blog.slug}`} legacyBehavior>
-                <a className="text-green-500 hover:underline">Read More</a>
-              </Link>
+      <Header/>
+      <div className="container mx-auto my-8">
+        <h1 className="text-5xl font-bold mb-8 text-center">Our Blog</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {blogs.map((blog) => (
+            <div
+              key={blog.slug}
+              className="border rounded-lg overflow-hidden shadow-md"
+            >
+              <Image
+                src={blog.image}
+                alt={blog.title}
+                width={500}
+                height={160}
+                className="h-40 w-full object-cover"
+              />
+              <div className="p-4">
+                <h2 className="text-lg font-semibold mb-2">{blog.title}</h2>
+                <p className="text-gray-600 mb-4">{blog.excerpt}</p>
+                <Link href={`/blogpost/${blog.slug}`} legacyBehavior>
+                  <a className="text-green-500 hover:underline">Read More</a>
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-    <Footer/>
+      <Footer/>
     </div>
   );
 }

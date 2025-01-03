@@ -1,7 +1,9 @@
+'use client'; 
 import { useRouter } from "next/router";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
 import CommentSection from "@/app/components/commentsection";
+import Image from "next/image";
 
 type BlogPost = {
   title: string;
@@ -66,11 +68,13 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     <div>
       <Header />
       <main className="container mx-auto my-8 flex flex-col items-center text-center">
-  <img
-    src={blog.image}
-    alt={blog.title}
-    className="w-full max-w-3xl h-64 object-cover mb-6 rounded-lg"
-  />
+      <Image 
+  src={blog.image} 
+  alt={blog.title} 
+  width={800} 
+  height={400} 
+  className="w-full max-w-3xl h-64 object-cover mb-6 rounded-lg"
+/>
   <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
   <p className="text-gray-700 mb-6 max-w-2xl">{blog.content}</p>
   <CommentSection />

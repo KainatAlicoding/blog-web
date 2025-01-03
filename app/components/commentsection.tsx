@@ -1,5 +1,5 @@
 // components/CommentSection.tsx
-"use client"
+'use client'; 
 import { useState } from "react";
 
 const CommentSection = () => {
